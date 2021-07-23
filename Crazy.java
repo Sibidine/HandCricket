@@ -71,7 +71,7 @@ class Crazy
                 ball=sc.nextInt();
 				}while(ball<0 || ball>10);
                 int shot=rng(11);
-                if((target-totalruns)/((5-i)*6-j)>6.0) //ok what the fuck did I do here
+                if((target-totalruns)/((5-i)*6-j)>6.0) //net run rate to determine CPU's shots if Required run rate>6
                 {
                     int runrate=(int)(target-totalruns)/((5-i)*6-j);
                     shot=rng2(11,runrate-1);
