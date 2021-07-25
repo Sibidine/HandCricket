@@ -86,6 +86,9 @@ class Crazy
 				{
 					shot=((int)(target-totalruns)/((5-i)*6-j)-1)>10?rng(11):rng2(11,((int)(target-totalruns)/((5-i)*6-j)-1));
 				}
+		    else{
+			    shot=rng(11);
+		    }
                 if(Math.abs(shot-ball)==1.0)
                 {
                     System.out.println("Out!");
