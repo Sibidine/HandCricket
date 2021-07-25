@@ -32,7 +32,14 @@ class Crazy
 				{
 					shot=sc.nextInt();
 				}while(shot<0 || shot>10);
+		    if(innings==1)
+		    {
 				ball=(((chase-totalruns)/((5-i)*6-j)>10.0)&&(i>=3))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
+		    }
+		    else
+		    {
+			    ball=rng(11);
+		    }
                 if(Math.abs(shot-ball)==1.0)                                            //difference between runs entered and ball is 1 (out case)
                 {
                     System.out.println("Out!");
@@ -86,7 +93,8 @@ class Crazy
 				{
 					shot=((int)(target-totalruns)/((5-i)*6-j)-1)>10?rng(11):rng2(11,((int)(target-totalruns)/((5-i)*6-j)-1));
 				}
-		    else{
+		    else
+		    {
 			    shot=rng(11);
 		    }
                 if(Math.abs(shot-ball)==1.0)
