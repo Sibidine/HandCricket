@@ -94,7 +94,7 @@ class Crazy
 				do{
                 ball=sc.nextInt();
 				}while(ball<0 || ball>10);                         //CPU batting logic based on NRR- CPU checks RRR and generates the throw accordingly
-				if(target==0)
+				if(target!=0)
 				{
 					shot=((int)(target-totalruns)/((5-i)*6-j)-1)>10?rng(11):rng2(11,((int)(target-totalruns)/((5-i)*6-j)-1));
 				}
