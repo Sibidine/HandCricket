@@ -21,25 +21,29 @@ class Crazy
     static void batting()
     {
         System.out.println("No of overs =5");
-        int wickets =0,totalruns=0,flag=0,ball=0;
+        int wickets =0,totalruns=0,flag=0,ball=0;int a[]={11,12};
         for(int i=0;i<5;i++)                                                                //loop for overs
         {
             for(int j=0;j<6;j++)                                                           //deliveries per over
             {
                 System.out.println("Delivery:"+i+"."+j);
                 System.out.println("enter runs");
-				do
-				{
-					shot=sc.nextInt();
-				}while(shot<0 || shot>10);
+		do
+		{
+			shot=sc.nextInt();
+		}while(shot<0 || shot>10);
 		    if(innings==1)
 		    {
-				ball=(((chase-totalruns)/((5-i)*6-j)>10.0)&&(i>=3))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
+			ball=(((chase-totalruns)/((5-i)*6-j)>10.0)&&(i>=3))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
 		    }
 		    else
 		    {
 			    ball=rng(11);
 		    }
+		    if(a[0]==a[1])
+			{
+				ball=a[0]-1;									//check for spamming the same number
+			}
                 if(Math.abs(shot-ball)==1.0)                                            //difference between runs entered and ball is 1 (out case)
                 {
                     System.out.println("Out!");
@@ -62,6 +66,7 @@ class Crazy
                 {
                     break;
                 }
+		    a[(6*i+j)%2]=shot;						//storing entries in alternating positions of the array
             }
 			       if(wickets==10) // break from j loop needs to fall through i loop too
             {
@@ -88,7 +93,7 @@ class Crazy
                 System.out.println("enter delivery");
 				do{
                 ball=sc.nextInt();
-				}while(ball<0 || ball>10);                                              //CPU batting logic based on NRR- CPU checks RRR and generates the throw accordingly
+				}while(ball<0 || ball>10);                         //CPU batting logic based on NRR- CPU checks RRR and generates the throw accordingly
 				if(innings==1)
 				{
 					shot=((int)(target-totalruns)/((5-i)*6-j)-1)>10?rng(11):rng2(11,((int)(target-totalruns)/((5-i)*6-j)-1));
