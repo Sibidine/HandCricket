@@ -38,7 +38,7 @@ class Crazy
 		    }
 		    else
 		    {
-			    ball=rng(11);
+			    ball=rng(10);
 		    }
 		    if(a[0]==a[1])
 			{
