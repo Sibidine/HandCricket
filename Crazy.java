@@ -27,7 +27,7 @@ class Crazy
             for(int j=0;j<6;j++)                                                           //deliveries per over
             {
                 System.out.println("Delivery:"+i+"."+j);
-                System.out.println("enter runs");
+                System.out.println("Enter runs");
 		do
 		{
 			shot=sc.nextInt();
@@ -90,7 +90,7 @@ class Crazy
             for(int j=0;j<6;j++)
             {
                 System.out.println("Delivery:"+i+"."+j);
-                System.out.println("enter delivery");
+                System.out.println("Enter delivery");
 				do{
                 ball=sc.nextInt();
 				}while(ball<0 || ball>10);                         //CPU batting logic based on NRR- CPU checks RRR and generates the throw accordingly
@@ -140,14 +140,22 @@ class Crazy
             chase=totalruns; //chase is for the cpu's runs
             wickets2=wickets;
     }
+
     public static void main(String args[])
     {
-        int toss=rng(2);
-        if(toss==0)
+        System.out.println("WELCOME TO CRAZY.");
+        System.out.println("CRAZY is Normal HandCricket, but with a few extra rules:-\n" +
+                "-The bowler gets a wicket if the difference between the two throws is one (eg: if you as the batter throw 7, and the bowler throws 6, he/she gets a wicket)\n" +
+                "-If the two throws are the same, then the runs you would normally have scored get squared (eg: if both the bowler and the batter throw 8, 64 (aka 8 squared) gets added to the batter's run total)\n" +
+                "-It's 5 overs for now, plan to fix that, along with the general spiderweb code in the future.\n");
+        System.out.println("We will have the toss now. Please choose 0 for Head and 1 for Tail");
+        int toss=sc.nextInt();
+        int toss2=rng(2);
+        if(toss2==toss)
         {
 			do
 			{
-            System.out.println("Enter 0 for batting,1 for bowling");
+            System.out.println("You won the toss.\nEnter 0 for batting,1 for bowling");
 			innings=sc.nextInt();
 			}while(innings!=0&&innings!=1);
         }
@@ -156,11 +164,11 @@ class Crazy
             innings=rng(2);
             if(innings==0)
             {
-                System.out.println("You lost the toss,CPU will bowl first");
+                System.out.println("You lost the toss,CPU will bowl first.");
             }
             else
             {
-                System.out.println("You lost the toss,CPU will bat first");
+                System.out.println("You lost the toss,CPU will bat first.");
             }
         }
         switch(innings)
