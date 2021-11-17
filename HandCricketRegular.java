@@ -1,11 +1,8 @@
-/**Crazy is a variant of handcricket, where all normal rules of handcricket are followed, with the exceptions that an absolute difference of 1 between the numbers thrown 
-results in a wicket, and, if both throw the same number, the runs tally increases by the square of the same.
-eg: *shot=4; ball=7;
-     totalruns+=4;
-	*shot=7;ball=6;
-	 wickets++;
-	*shot=5;ball=5;
-	totalruns+=25;
+/**Handcricket is a game that more or less follows the rules of regular cricket, with the exception being that any number can be thrown from 1-10 per delivery.
+*If the batter and the bowler throw unique numbers, then the number thrown by the batter is added to their run total.
+*If the batsman and bowler throw the same number, a wicket is considered to fall for the batter. The innings is considered over when all 10 wickets fall or 
+30 deliveries have been bowled.
+
 */
 import java.util.Scanner;
 import java.util.Random;
