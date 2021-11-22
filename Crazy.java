@@ -22,9 +22,9 @@ class Crazy
     {
         System.out.println("No of overs =5");
         int wickets =0,totalruns=0,flag=0,ball=0;int a[]={11,12};
-        for(int i=0;i<5;i++)                                                                //loop for overs
+        for(int i=0;i<5;i++)                                                                    //loop for overs
         {
-            for(int j=0;j<6;j++)                                                           //deliveries per over
+            for(int j=0;j<6;j++)                                                                //deliveries per over
             {
                 System.out.println("Delivery:"+i+"."+j);
                 System.out.println("Enter runs");
@@ -42,13 +42,13 @@ class Crazy
 		    }
 		    if(a[0]==a[1])
 			{
-				ball=a[0]-1;									//check for spamming the same number
+				ball=a[0]-1;							//check for spamming the same number
 			}
-                if(Math.abs(shot-ball)==1.0)                                            //difference between runs entered and ball is 1 (out case)
+                if(Math.abs(shot-ball)==1.0)                                                   //difference between runs entered and ball is 1 (out case)
                 {
                     System.out.println("Out!");
                     wickets++;
-                    if(wickets==10)                                                      //all out
+                    if(wickets==10)                                                            //all out
                     {
                         break;
                     }
@@ -66,9 +66,9 @@ class Crazy
                 {
                     break;
                 }
-		    a[(6*i+j)%2]=shot;						//storing entries in alternating positions of the array
+		    a[(6*i+j)%2]=shot;						         //storing entries in alternating positions of the array
             }
-			       if(wickets==10) // break from j loop needs to fall through i loop too
+			       if(wickets==10)                                          // break from j loop needs to fall through i loop too
             {
                 break;
             }
@@ -146,8 +146,7 @@ class Crazy
         System.out.println("WELCOME TO CRAZY.");
         System.out.println("CRAZY is Normal HandCricket, but with a few extra rules:-\n" +
                 "-The bowler gets a wicket if the difference between the two throws is one (eg: if you as the batter throw 7, and the bowler throws 6, he/she gets a wicket)\n" +
-                "-If the two throws are the same, then the runs you would normally have scored get squared (eg: if both the bowler and the batter throw 8, 64 (aka 8 squared) gets added to the batter's run total)\n" +
-                "-It's 5 overs for now, plan to fix that, along with the general spiderweb code in the future.\n");
+                "-If the two throws are the same, then the runs you would normally have scored get squared (eg: if both the bowler and the batter throw 8, 64 (aka 8 squared) gets added to the batter's run total)\n");
         System.out.println("We will have the toss now. Please choose 0 for Head and 1 for Tail");
         int toss=sc.nextInt();
         int toss2=rng(2);
