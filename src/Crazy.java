@@ -35,7 +35,7 @@ class Crazy
 		    if(innings==1)
 		    {
 		    	//ball=(((chase-totalruns)/((5-i)*6-j)>10.0)&&(i>=3))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
-			      if((chase-totalruns)/((5-i)*6-j)>10.0)
+			      if((chase-totalruns)/(((5-i)*6-j)>10.0)&&(i>=3))
 			    	  ball=rng2(6,1);
 			      else
 			    	  ball=rng(11);
