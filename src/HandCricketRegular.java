@@ -28,7 +28,11 @@ class HandCricketRegular
 		}while(shot<0 || shot>10);
 		    if(innings==1)
 		    {
-			ball=(((chase-totalruns)/((5-i)*6-j)>10.0)&&(i>=3))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
+		    	//ball=(((chase-totalruns)/((5-i)*6-j)>10.0)&&(i>=3))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
+		    	 if((chase-totalruns)/(((5-i)*6-j)>10.0)&&(i>=3))
+			    	  ball=rng2(6,1);
+			      else
+			    	  ball=rng(11);
 		    }
 		    else
 		    {
@@ -86,7 +90,11 @@ class HandCricketRegular
 				}while(ball<0 || ball>10);                         //CPU batting logic based on NRR- CPU checks RRR and generates the throw accordingly
 				if(target!=0)
 				{
-					shot=((int)((ball<=6)?rng2(11,((int)(target-totalruns)/((5-i)*6-j))):rng2(11,((int)(target-totalruns)/((5-i)*6-j)-1))));
+					//shot=((int)((ball<=6)?rng2(11,((int)(target-totalruns)/((5-i)*6-j))):rng2(11,((int)(target-totalruns)/((5-i)*6-j)-1))));
+					if(ball<=6)
+						shot=rng2(11,((int)(target-totalruns)/((5-i)*6-j)));
+					else
+						shot=rng2(11,((int)(target-totalruns)/((5-i)*6-j)-1));
 				}
 		    else
 		    {
