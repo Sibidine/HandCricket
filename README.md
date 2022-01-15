@@ -14,7 +14,7 @@ Disclaimer: please make sure you have jdk installed beforehand!
 For linux:
 ```
 git clone https://github.com/Sibidine/Test.git
-cd Test
+cd HandCricekt
 ```
 
 To run the programs, do `java {name of the file}`
