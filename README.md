@@ -17,4 +17,5 @@ git clone https://github.com/Sibidine/Test.git
 cd HandCricekt
 ```
 
-To run the programs, do `java {name of the file}`
+To run the programs, first compile the program you want toe execute from the `src` files using `javac {name of the file}`
+Then, to run the program, do `java {name of the file}`.
