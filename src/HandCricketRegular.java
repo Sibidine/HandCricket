@@ -12,11 +12,11 @@ class HandCricketRegular
     static Scanner sc=new Scanner(System.in);
     static Random ra=new Random();
     static int target=0,chase=0,wickets2=0;static int innings=0,shot=0,ball=0;
-    static void batting()
+    static void batting(int overs)
     {
-        System.out.println("No of overs =5");
+        System.out.println("No of overs = " + overs);
         int wickets =0,totalruns=0,flag=0,ball=0;int a[]={11,12};
-        for(int i=0;i<5;i++)                                                                //loop for overs
+        for(int i=0;i<overs;i++)                                                                //loop for overs
         {
             for(int j=0;j<6;j++)                                                           //deliveries per over
             {
@@ -28,8 +28,8 @@ class HandCricketRegular
 		}while(shot<0 || shot>10);
 		    if(innings==1)
 		    {
-		    	//ball=(((chase-totalruns)/((5-i)*6-j)>10.0)&&(i>=3))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
-		    	 if(((chase-totalruns)/((5-i)*6-j)>10.0)&&(i>=3))
+		    	//ball=(((chase-totalruns)/((overs-i)*6-j)>10.0)&&(i>=3))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
+		    	 if(((chase-totalruns)/((overs-i)*6-j)>10.0)&&(i>=3))
 			    	  ball=rng2(6,1);
 			      else
 			    	  ball=rng(11);
@@ -75,11 +75,11 @@ class HandCricketRegular
             target=totalruns;                                                           //target is for the user's runs
             wickets2=wickets;
     }
-    static void bowling()
+    static void bowling(int overs)
     {
-        System.out.println("No of overs =5");
+        System.out.println("No of overs = " + overs);
         int wickets =0,totalruns=0;
-        for(int i=0;i<5;i++)
+        for(int i=0;i<overs;i++)
         {
             for(int j=0;j<6;j++)
             {
@@ -90,11 +90,11 @@ class HandCricketRegular
 				}while(ball<0 || ball>10);                         //CPU batting logic based on NRR- CPU checks RRR and generates the throw accordingly
 				if(target!=0)
 				{
-					//shot=((int)((ball<=6)?rng2(11,((int)(target-totalruns)/((5-i)*6-j))):rng2(11,((int)(target-totalruns)/((5-i)*6-j)-1))));
+					//shot=((int)((ball<=6)?rng2(11,((int)(target-totalruns)/((overs-i)*6-j))):rng2(11,((int)(target-totalruns)/((overs-i)*6-j)-1))));
 					if(ball<=6)
-						shot=rng2(11,((int)(target-totalruns)/((5-i)*6-j)));
+						shot=rng2(11,((int)(target-totalruns)/((overs-i)*6-j)));
 					else
-						shot=rng2(11,((int)(target-totalruns)/((5-i)*6-j)-1));
+						shot=rng2(11,((int)(target-totalruns)/((overs-i)*6-j)-1));
 				}
 		    else
 		    {
@@ -146,6 +146,9 @@ class HandCricketRegular
         }
         else
         {
+	    int overs;
+	    System.out.println("Enter number of overs for the match:");
+	    overs=sc.nextInt();
             innings=rng(2);
             if(innings==0)
             {
@@ -158,9 +161,9 @@ class HandCricketRegular
         }
         switch(innings)
         {
-            case 0:batting();
+            case 0:batting(overs);
             innings++;
-            bowling();
+            bowling(overs);
             if(target>chase)
             {
                 System.out.println("You win by "+(target-chase)+" runs");
@@ -174,9 +177,9 @@ class HandCricketRegular
                 System.out.println("CPU wins by "+(10-wickets2)+" wickets");
             }
             break;
-            case 1:bowling();
+            case 1:bowling(overs);
             innings--;
-            batting();
+            batting(overs);
             if(target<chase)
             {
                 System.out.println("CPU wins by "+(chase-target)+" runs");
