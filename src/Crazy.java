@@ -17,12 +17,12 @@ class Crazy
 {
     static Scanner sc=new Scanner(System.in);
     static Random ra=new Random();
-    static int target=0,chase=0,wickets2=0;static int innings=0,shot=0,ball=0;
+    static int target=0,chase=0,wickets2=0;static int innings=0,shot=0,ball=0,overs=5;
     static void batting()
     {
-        System.out.println("No of overs =5");
+        System.out.println("No of overs = " + overs);
         int wickets =0,totalruns=0,flag=0,ball=0;int a[]={11,12};
-        for(int i=0;i<5;i++)                                                                    //loop for overs
+        for(int i=0;i<overs;i++)                                                                    //loop for overs
         {
             for(int j=0;j<6;j++)                                                                //deliveries per over
             {
@@ -34,8 +34,8 @@ class Crazy
 		}while(shot<0 || shot>10);
 		    if(innings==1)
 		    {
-		    	//ball=(((chase-totalruns)/((5-i)*6-j)>10.0)&&(i>=3))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
-			      if((chase-totalruns)/(((5-i)*6-j)>10.0)&&(i>=3))
+		    	//ball=(((chase-totalruns)/((overs-i)*6-j)>10.0)&&(i>overs/2))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
+			      if(((chase-totalruns)/(((overs-i)*6-j))>10.0)&&(i>overs/2))
 			    	  ball=rng2(6,1);
 			      else
 			    	  ball=rng(11);
@@ -87,9 +87,9 @@ class Crazy
     }
     static void bowling()
     {
-        System.out.println("No of overs =5");
+        System.out.println("No of overs = " + overs);
         int wickets =0,totalruns=0;
-        for(int i=0;i<5;i++)
+        for(int i=0;i<overs;i++)
         {
             for(int j=0;j<6;j++)
             {
@@ -100,11 +100,11 @@ class Crazy
 				}while(ball<0 || ball>10);                         //CPU batting logic based on NRR- CPU checks RRR and generates the throw accordingly
 				if(target!=0)
 				{
-					//shot=((int)((ball<=6)?rng2(11,((int)(target-totalruns)/((5-i)*6-j))):rng2(11,((int)(target-totalruns)/((5-i)*6-j)-1))));
+					//shot=((int)((ball<=6)?rng2(11,((int)(target-totalruns)/((overs-i)*6-j))):rng2(11,((int)(target-totalruns)/((overs-i)*6-j)-1))));
 					if(ball<=6)
-						shot=rng2(11,((int)(target-totalruns)/((5-i)*6-j)));
+						shot=rng2(11,((int)(target-totalruns)/((overs-i)*6-j)));
 					else
-						shot=rng2(11,((int)(target-totalruns)/((5-i)*6-j)-1));
+						shot=rng2(11,((int)(target-totalruns)/((overs-i)*6-j)-1));
 				}
 		    else
 		    {
@@ -178,6 +178,8 @@ class Crazy
                 System.out.println("You lost the toss,CPU will bat first.");
             }
         }
+        System.out.println("Enter number of overs for the match:");
+        overs=sc.nextInt();
         switch(innings)
         {
             case 0:batting();
