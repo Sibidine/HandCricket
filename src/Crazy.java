@@ -35,7 +35,7 @@ class Crazy
 		    if(innings==1)
 		    {
 		    	//ball=(((chase-totalruns)/((overs-i)*6-j)>10.0)&&(i>overs/2))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
-			      if((chase-totalruns)/(((overs-i)*6-j)>10.0)&&(i>overs/2))
+			      if(((chase-totalruns)/(((overs-i)*6-j))>10.0)&&(i>overs/2))
 			    	  ball=rng2(6,1);
 			      else
 			    	  ball=rng(11);
@@ -168,8 +168,6 @@ class Crazy
         }
         else
         {
-	    System.out.println("Enter number of overs for the match:");
-	    overs=sc.nextInt();
             innings=rng(2);
             if(innings==0)
             {
@@ -180,6 +178,8 @@ class Crazy
                 System.out.println("You lost the toss,CPU will bat first.");
             }
         }
+        System.out.println("Enter number of overs for the match:");
+        overs=sc.nextInt();
         switch(innings)
         {
             case 0:batting();

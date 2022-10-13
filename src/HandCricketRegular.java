@@ -158,6 +158,8 @@ class HandCricketRegular
                 System.out.println("You lost the toss,CPU will bat first");
             }
         }
+        System.out.println("Enter number of overs for the match:");
+	    overs=sc.nextInt();
         switch(innings)
         {
             case 0:batting();
