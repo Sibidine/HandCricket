@@ -11,8 +11,8 @@ class HandCricketRegular
 {
     static Scanner sc=new Scanner(System.in);
     static Random ra=new Random();
-    static int target=0,chase=0,wickets2=0;static int innings=0,shot=0,ball=0;
-    static void batting(int overs)
+    static int target=0,chase=0,wickets2=0;static int innings=0,shot=0,ball=0,overs=5;
+    static void batting()
     {
         System.out.println("No of overs = " + overs);
         int wickets =0,totalruns=0,flag=0,ball=0;int a[]={11,12};
@@ -28,8 +28,8 @@ class HandCricketRegular
 		}while(shot<0 || shot>10);
 		    if(innings==1)
 		    {
-		    	//ball=(((chase-totalruns)/((overs-i)*6-j)>10.0)&&(i>=3))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
-		    	 if(((chase-totalruns)/((overs-i)*6-j)>10.0)&&(i>=3))
+		    	//ball=(((chase-totalruns)/((overs-i)*6-j)>10.0)&&(i>overs/2))?rng2(6,1):rng(11);  //CPU throws small numbers in slog overs if asking RR is very high
+		    	 if(((chase-totalruns)/((overs-i)*6-j)>10.0)&&(i>overs/2))
 			    	  ball=rng2(6,1);
 			      else
 			    	  ball=rng(11);
@@ -75,7 +75,7 @@ class HandCricketRegular
             target=totalruns;                                                           //target is for the user's runs
             wickets2=wickets;
     }
-    static void bowling(int overs)
+    static void bowling()
     {
         System.out.println("No of overs = " + overs);
         int wickets =0,totalruns=0;
@@ -146,7 +146,6 @@ class HandCricketRegular
         }
         else
         {
-	    int overs;
 	    System.out.println("Enter number of overs for the match:");
 	    overs=sc.nextInt();
             innings=rng(2);
@@ -161,9 +160,9 @@ class HandCricketRegular
         }
         switch(innings)
         {
-            case 0:batting(overs);
+            case 0:batting();
             innings++;
-            bowling(overs);
+            bowling();
             if(target>chase)
             {
                 System.out.println("You win by "+(target-chase)+" runs");
@@ -177,9 +176,9 @@ class HandCricketRegular
                 System.out.println("CPU wins by "+(10-wickets2)+" wickets");
             }
             break;
-            case 1:bowling(overs);
+            case 1:bowling();
             innings--;
-            batting(overs);
+            batting();
             if(target<chase)
             {
                 System.out.println("CPU wins by "+(chase-target)+" runs");
