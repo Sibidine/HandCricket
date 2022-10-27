@@ -19,3 +19,10 @@ cd HandCricekt
 
 To run the programs, first compile the program you want toe execute from the `src` files using `javac {name of the file}`
 Then, to run the program, do `java {name of the file}`.
+
+***Contributors***
+ <a href="https://github.com/Sibidine/HandCricket/graphs/contributors">
+
+ <img src="https://contrib.rocks/image?repo=Sibidine/HandCricket" />
+
+</a>
